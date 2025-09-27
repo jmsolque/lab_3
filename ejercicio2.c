@@ -1,11 +1,14 @@
 // Este script contiene el codigo del ejercicio 2 del laboratorio 3
 // En esta modificacion se hace que se genere una matriz aleatoria
+// En esta modfica para que el tamaño de la matriz "SIZE" cambie 
+
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-#define SIZE 3
+#define SIZE 6  // Cambio el tamaño de la matriz 
+ 
 
 int sumafila(int matriz [SIZE][SIZE], int fila){
     int suma = 0;
@@ -81,6 +84,7 @@ void randomMatriz(int matriz[SIZE][SIZE]){    // Esta funcion genera una matriz 
 
 int main (){
     srand(time(NULL));   // Hace que los numeros no se repitan en la misma linea 
+    printf("\nLas siguientes matrices son del tamaño %d x %d \n", SIZE, SIZE);
     
     for (int prueba = 1; prueba <= 3; prueba++){   // Genera la contidad de pruebas dentro del rango de 1 a 3
         int matrizAleatoria[SIZE][SIZE];
