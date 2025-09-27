@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define SIZE 2  // Cambio el tamaño de la matriz 
+#define SIZE 9  // Cambio el tamaño de la matriz 
  
 
 int sumafila(int matriz [SIZE][SIZE], int fila){
