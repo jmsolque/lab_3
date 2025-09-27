@@ -1,6 +1,9 @@
 // Este script contiene el codigo del ejercicio 2 del laboratorio 3
+// En esta modificacion se hace que se genere una matriz aleatoria
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define SIZE 3
 
@@ -62,31 +65,45 @@ int magicsquare(int matriz[SIZE][SIZE]){
 void printMatriz(int matriz[SIZE][SIZE]){
     for (int i = 0; i < SIZE; i++){        //Suma un elemento a la fila cada vez que la posicion es menor al tamaño
         for (int j = 0; j < SIZE; j++){     //Suma un elemento a la columna cada vez que la posicion es menor al tamaño
-            printf("%d ", matriz[i][j]);   // Imprime la matriz con filas i y columnas j
+            printf("%d ", matriz[i][j]);   
         }
         printf("\n");  //Salto de linea 
     }
 }
 
-int main (){
-    int matriz [SIZE][SIZE] = {
-        {2, 7, 6},
-        {9, 5, 1},
-        {4, 3, 8}
-    };
-
-    printf("La matriz utilizada es:\n");
-    printMatriz(matriz);
-
-    if (magicsquare(matriz)){
-        printf("La matriz es cuadrado magico \n");
+void randomMatriz(int matriz[SIZE][SIZE]){    // Esta funcion genera una matriz cuadrada aleatoria
+    for (int i = 0; i < SIZE; i++){
+        for (int j = 0; j < SIZE; j++){
+            matriz[i][j] = rand() % 10 + 0;  // Escoge numeros aleatorios ente 0 y 10 para tener mas posibilidad de tener un cuadrado magico en el ejemplo 
+        }
     }
-    else{
-        printf("La matriz no es cuadrado magico \n");
+}
+
+int main (){
+    srand(time(NULL));   // Hace que los numeros no se repitan en la misma linea 
+    
+    for (int prueba = 1; prueba <= 3; prueba++){   // Genera la contidad de pruebas dentro del rango de 1 a 3
+        int matrizAleatoria[SIZE][SIZE];
+        randomMatriz(matrizAleatoria);     // Aplica la funcion que genera una matriz aleatroia 
+
+        printf("\n La matriz generada aleatoriamente #%d: \n", prueba);   //Imprime las matrices generadas aleatoriamente
+        printMatriz(matrizAleatoria);
+
+        if (magicsquare(matrizAleatoria)){
+            printf("La matriz  #%d es cuadrado magico \n", prueba);    // Revisa si la matriz es cuadrada magica y da el mesnaje
+        }
+        else{
+            printf("La matriz #%d NO es cuadrado magico \n", prueba);   //Si la matriz no es cuadrada magica da el mensaje
+        }
+
     }
     return 0;
 
 }
+
+
+
+
 
 
 
